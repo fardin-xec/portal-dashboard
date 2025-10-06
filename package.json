@@ -2,7 +2,7 @@
   "name": "portal-dashboard",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/fardin-xec/portal-dashboard",
+  "homepage": "https://fardin-xec.github.io/portal-dashboard",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
