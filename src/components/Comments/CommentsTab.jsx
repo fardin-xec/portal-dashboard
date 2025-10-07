@@ -20,7 +20,7 @@ import {
   Stack,
 } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import { Edit, Delete, Refresh, History, Close } from '@mui/icons-material';
+import {Refresh, Close } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import { commentService } from '../../service/commentService';
 

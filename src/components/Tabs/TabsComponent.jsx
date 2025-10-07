@@ -29,9 +29,14 @@ function a11yProps(index) {
 
 const TabsComponent = () => {
   const [value, setValue] = useState(0);
+  const [imageError, setImageError] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
   };
 
   const tabVariants = {
@@ -55,43 +60,34 @@ const TabsComponent = () => {
           gap: 2 
         }}>
           {/* Company Logo */}
-          <Box sx={{ position: 'relative' }}>
-            <Box
-              component="img"
-              src="/ashghal.png" // Corrected path from public folder
-              alt="Company Logo"
-              sx={{
-                height: 100,
-                width: 100,
-                objectFit: 'contain',
-                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
-                display: 'block',
-              }}
-              onError={(e) => {
-                // Hide the image and show fallback
-                e.target.style.display = 'none';
-                const fallback = e.target.nextElementSibling;
-                if (fallback) fallback.style.display = 'flex';
-              }}
-            />
-            
-            {/* Fallback Avatar */}
-            <Avatar
-              className="fallback-avatar"
-              sx={{
-                height: 80,
-                width: 80,
-                backgroundColor: 'rgba(139, 74, 156, 0.1)',
-                border: '2px solid rgba(139, 74, 156, 0.2)',
-                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
-                display: 'none', // Initially hidden
-                position: 'absolute',
-                top: 0,
-                left: 0,
-              }}
-            >
-              <Business sx={{ fontSize: 40, color: '#9e1b5cff' }} />
-            </Avatar>
+          <Box sx={{ position: 'relative', height: 100, width: 100 }}>
+            {!imageError ? (
+              <Box
+                component="img"
+                src={`${process.env.PUBLIC_URL}/ashghal.png`}
+                alt="Company Logo"
+                sx={{
+                  height: 100,
+                  width: 100,
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
+                  display: 'block',
+                }}
+                onError={handleImageError}
+              />
+            ) : (
+              <Avatar
+                sx={{
+                  height: 100,
+                  width: 100,
+                  backgroundColor: 'rgba(139, 74, 156, 0.1)',
+                  border: '2px solid rgba(139, 74, 156, 0.2)',
+                  filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))',
+                }}
+              >
+                <Business sx={{ fontSize: 50, color: '#9e1b5cff' }} />
+              </Avatar>
+            )}
           </Box>
 
           {/* Portal Management Title */}
